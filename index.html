@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order</title>
+
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    html, body {
+  height: 100%;
+  width: 100%;
+}
+
+
+    .container {
+      margin-bottom: 70px;
+    }
+
+    input {
+      display: block;
+      height: 25px;
+      width: 95%;
+      margin-bottom: 10px;
+      font-size: large;
+    }
+
+    label {
+      font-size: large;
+      font-weight: bold;
+    }
+
+    label#axis,
+    label#besok {
+      font-size: 12px;
+    }
+
+    div.axis {
+      display: inline-block;
+      margin: auto;
+    }
+
+    body {
+      padding: 30px;
+      background-color: #DCD7C9;
+    }
+
+    .products {
+      border-radius: 5px;
+      padding: 20px;
+      background-color: rgb(156, 194, 156);
+
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .produk {
+      width: 50%;
+    }
+
+    button {
+      margin: auto;
+      margin-top: 10px;
+      width: 100px;
+      height: 30px;
+      background-color: beige;
+      border: 1px solid black;
+      border-radius: 3px;
+      font-weight: bolder;
+      font-size: larger;
+    }
+
+    button:hover {
+      background-color: black;
+      color: rgb(240, 236, 231);
+    }
+
+    td {
+      padding: 2px;
+    }
+
+    .tombol {
+      display: flex;
+    }
+
+    table {
+      width: 100%;
+    }
+
+    .bold {
+      font-weight: bold;
+      background-color: rgb(34, 31, 27);
+      color: white;
+    }
+
+    .hide {
+      display: none;
+    }
+
+    .checkbox-fitur {
+      display: flex;
+    }
+
+    .input {
+      margin: 0 20px 0 20px;
+
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+
+    <div class=" checkbox-fitur">
+      <div class="input">
+        <input type="checkbox" onclick="cektampil()" name="axis" id="axis"><label for="axis" id="axis">Tampilkan
+          Axis</label>
+      </div>
+      <div class="input">
+        <input type="date" class="inputTanggal">
+      </div>
+      <div class="input">
+        <p><a href="#" class="cekHarga" onclick="cekharga()">cek</a></p>
+      </div>
+
+
+    </div>
+    <h1>XL</h1>
+    <div class="products">
+      <div class=" produk">
+        <label for="45GB">45 GB</label>
+        <input class="voucher v-xl xl" type="number" name="45GB" id="45GB">
+
+        <label for="27gb">27 GB</label>
+        <input class="voucher v-xl xl" type="number" name="27gb" id="27gb">
+
+        <label for="18gb">18 GB</label>
+        <input class="voucher v-xl xl" type="number" name="18gb" id="18gb">
+
+        <label for="15gb">15 GB</label>
+        <input class="voucher v-xl xl" type="number" name="15gb" id="15gb">
+
+        <label for="9gb">9 GB</label>
+        <input class="voucher v-xl xl" type="number" name="9gb" id="9gb">
+
+        <label for="10,5gb">10,5 GB</label>
+        <input class="voucher v-xl xl" type="number" name="10,5gb" id="10,5gb">
+
+        <label for="7gb">7 GB</label>
+        <input class="voucher v-xl xl" type="number" name="7gb" id="7gb">
+
+        <label for="4,5gb">4,5 GB</label>
+        <input class="voucher v-xl xl" type="number" name="4,5gb" id="4,5gb">
+
+
+
+      </div>
+
+      <div class="produk">
+        <label for="45gb">45 GB</label>
+        <input class="kartu k-xl xl" type="number" name="45gb" id="45gb">
+
+        <label for="27gb">27 GB</label>
+        <input class="kartu k-xl xl" type="number" name="27gb" id="27gb">
+
+        <label for="15gb">15 GB</label>
+        <input class="kartu k-xl xl" type="number" name="15gb" id="15gb">
+
+        <label for="4,5gb">4,5 GB</label>
+        <input class="kartu k-xl xl" type="number" name="4,5gb" id="4,5gb">
+
+      </div>
+
+
+    </div>
+
+    <table border="1" cellspacing="0">
+      <thead>
+        <tr class="bold">
+          <td>GB</td>
+          <td>Harga</td>
+          <td>Harga X jumlah</td>
+        </tr>
+      </thead>
+
+      <tbody class="tbody-xl">
+
+      </tbody>
+
+      <tfoot>
+        <tr class="bold">
+          <td colspan="2">Total</td>
+          <td class="total-xl"></td>
+        </tr>
+      </tfoot>
+
+    </table>
+
+
+
+    <div class="tombol">
+      <button class="tampilkan-axis " onclick="kirim()">Kirim</button>
+      <button class="btn btn-hapus-xl" onclick="hapus('xl')">Bersihkan</button>
+    </div>
+
+
+
+
+    <h1 class="sembunyikan-axis hide">Axis</h1>
+    <div class="products sembunyikan-axis hide">
+      <div class=" produk">
+        <label for="12gb">9 GB</label>
+        <input class="voucher v-axis" type="number" name="12gb" id="12gb">
+
+        <label for="6gb">6 GB</label>
+        <input class="voucher v-axis" type="number" name="6gb" id="6gb">
+
+        <label for="4gb">4 GB</label>
+        <input class="voucher v-axis" type="number" name="4gb" id="4gb">
+
+        <label for="2gb">2 GB</label>
+        <input class="voucher v-axis" type="number" name="2gb" id="2gb">
+
+
+      </div>
+
+      <div class="produk">
+        <label for="12gb">12 GB</label>
+        <input class="kartu k-axis" type="number" disabled name="12gb" id="12gb">
+
+        <label for="4gb">4 GB</label>
+        <input class="kartu k-axis" type="number" disabled name="4gb" id="4gb">
+
+        <label for="2gb">2 GB</label>
+        <input class="kartu k-axis" type="number" disabled name="2gb" id="2gb">
+
+      </div>
+
+    </div>
+
+
+
+    <table class="sembunyikan-axis hide" border="1" cellspacing="0">
+      <thead>
+        <tr class="bold">
+          <td>GB</td>
+          <td>Harga</td>
+          <td>Harga X jumlah</td>
+        </tr>
+      </thead>
+
+      <tbody class="tbody-axis">
+
+      </tbody>
+
+      <tfoot>
+        <tr class="bold">
+          <td colspan="2">Total</td>
+          <td class="total-axis"></td>
+        </tr>
+      </tfoot>
+
+    </table>
+
+
+
+
+    <div class="tombol sembunyikan-axis hide">
+
+      <button onclick="kirim()">Kirim</button>
+      <button class="btn btn-hapus-axis" onclick="hapus('axis')">Bersihkan</button>
+    </div>
+
+
+    <div class="container sembunyikan-axis products hide">
+      <h3><span class="tampilan xlTotal"></span> + <span class="tampilan axisTotal"></span></h3>
+      <h3>= <span class="tampilan samadengan"></span></h3>
+    </div>
+
+
+
+
+
+
+
+
+    <script>
+      const priceXl = {
+        k4_5: 19.500.toFixed(3),
+        k_15: 44.000.toFixed(3),
+        k_27: 65.000.toFixed(3),
+        k_45: 91.000.toFixed(3),
+        v45: 90.300.toFixed(3),
+        v27: 64.500.toFixed(3),
+        v18: 50.000.toFixed(3),
+        v15: 43.000.toFixed(3),
+        v9: 28.000.toFixed(3),
+        v4_7: 14.000.toFixed(3),
+        v7_7: 18.000.toFixed(3),
+        v10_7: 24.000.toFixed(3)
+      }
+
+      const priceAxis = {
+        k_2: 9.150.toFixed(3),
+        k_4: 18.700.toFixed(3),
+        k_9: 31.500.toFixed(3),
+        v2: 9.500.toFixed(3),
+        v6: 24.000.toFixed(3),
+        v4: 15.500.toFixed(3),
+        v9: 31.500.toFixed(3)
+      }
+
+
+
+
+      function cekharga() {
+        event.preventDefault();
+        document.querySelectorAll(".voucher, .kartu").forEach(e => e.value = 1)
+      }
+
+
+
+      setInterval(() => {
+        function cekproduk(gb, isi, price, nilai, previousElementSibling, kode, produk) {
+          code = ""
+          code1 = ""
+          if (kode == "kartu") {
+            code = "%20KARTU"
+            code1 = "K"
+          } else {
+            code = ""
+            code1 = "V"
+          }
+          const cek = previousElementSibling
+          const barisbaru = '%0a'
+          if (cek == `${gb} GB`) {
+            arr.push(`${isi}${nilai}${code}${barisbaru}`)
+            if (produk == "xl") {
+              hargaxl += `<tr>
+                                    <td>${code1} ${gb}</td>
+                                    <td>${price}</td>
+                                    <td>${(price * nilai).toFixed(3)}</td>
+                                </tr>`
+              totalxl += Number((price * nilai).toFixed(3))
+
+
+            } else {
+              hargaaxis += `<tr>
+                                    <td>${code1} ${gb}</td>
+                                    <td>${price}</td>
+                                    <td>${(price * nilai).toFixed(3)}</td>
+                                </tr>`
+              totalaxis += Number((price * nilai).toFixed(3))
+
+            }
+
+          }
+        }
+        const tableXl = document.querySelector('.tbody-xl')
+        const totalprodukxl = document.querySelector('.total-xl')
+
+
+
+        function spasi(banyaknya) {
+          let spasinya = ``
+          for (let i = 0; i < banyaknya; i++) {
+            spasinya += "%20";
+          }
+          return spasinya
+        }
+        let tanggalinp = document.querySelector('.inputTanggal')
+
+
+
+
+        arr = []
+
+        if (tanggalinp.value == '') {
+
+          let date = new Date()
+          let hari = arrHari[date.getDay()]
+          let tanggal = date.getDate()
+          let bulan = arrBulan[date.getMonth()]
+          let tahun = date.getFullYear()
+          arr.push(`${hari}%2c%20${tanggal}-${bulan}-${tahun}%0a%0a`)
+
+
+        } else {
+          arrayTanggal = tanggalinp.valueAsDate
+          let hari = arrHari[arrayTanggal.getDay()]
+          let tanggal = arrayTanggal.getDate()
+          let bulan = arrBulan[arrayTanggal.getMonth()]
+          let tahun = arrayTanggal.getFullYear()
+          arr.push(`${hari}%2c%20${tanggal}-${bulan}-${tahun}%0a%0a`)
+
+        }
+
+
+
+        let xlada = false;
+        let produkxl = document.querySelectorAll('.xl')
+        for (let i = 0; i < produkxl.length; i++) {
+          if (produkxl[i].value) {
+            xlada = true
+            break;
+          }
+          else {
+            xlada = false
+          }
+        }
+
+
+
+
+        hargaxl = ``
+        totalxl = 0
+
+        hargaaxis = ``
+        totalaxis = 0
+
+        if (xlada == true) {
+          arr.push(`%2AXL%2A%0a`)
+        } else {
+        }
+        voucherxl.forEach(e => {
+          if (e.value != '') {
+            cekproduk(45, `45${spasi(6)}%3d%20`, priceXl.v45, e.value, e.previousElementSibling.textContent, "voucher", "xl")
+            cekproduk(27, `27${spasi(6)}%3d%20`, priceXl.v27, e.value, e.previousElementSibling.textContent, "voucher", "xl")
+            cekproduk(18, `18${spasi(6)}%3d%20`, priceXl.v18, e.value, e.previousElementSibling.textContent, "voucher", "xl")
+            cekproduk(15, `15${spasi(6)}%3d%20`, priceXl.v15, e.value, e.previousElementSibling.textContent, "voucher", "xl")
+            cekproduk(9, `9${spasi(8)}%3d%20`, priceXl.v9, e.value, e.previousElementSibling.textContent, "voucher", "xl")
+            cekproduk("10,5", `10,5${spasi(3)}%3d%20`, priceXl.v10_7, e.value, e.previousElementSibling.textContent, "voucher", "xl")
+            cekproduk("7", `7${spasi(8)}%3d%20`, priceXl.v7_7, e.value, e.previousElementSibling.textContent, "voucher", "xl")
+            cekproduk("4,5", `4,5${spasi(5)}%3d%20`, priceXl.v4_7, e.value, e.previousElementSibling.textContent, "voucher", "xl")
+
+
+          }
+        });
+
+
+        kartuxl.forEach(e => {
+          if (e.value != '') {
+            cekproduk(45, `45${spasi(6)}%3d%20`, priceXl.k_45, e.value, e.previousElementSibling.textContent, "kartu", "xl")
+            cekproduk(27, `27${spasi(6)}%3d%20`, priceXl.k_27, e.value, e.previousElementSibling.textContent, "kartu", "xl")
+            cekproduk(15, `15${spasi(6)}%3d%20`, priceXl.k_15, e.value, e.previousElementSibling.textContent, "kartu", "xl")
+            cekproduk("4,5", `4,5${spasi(5)}%3d%20`, priceXl.k4_5, e.value, e.previousElementSibling.textContent, "kartu", "xl")
+
+          }
+        });
+
+        if (xlada == true) {
+          arr.push(`Rp.%20${totalxl.toFixed(3)}`)
+        }
+
+
+        tableXl.innerHTML = hargaxl
+        totalprodukxl.innerHTML = `Rp. ${totalxl.toFixed(3)}`
+
+
+
+
+        if (document.querySelector('input#axis').checked) {
+
+          arr.push(`%0a%0a%0a%2AAxis%2A%0a`)
+
+          voucheraxis.forEach(e => {
+            if (e.value != '') {
+              cekproduk(9, `9${spasi(7)}%3d%20`, priceAxis.v9, e.value, e.previousElementSibling.textContent, "voucher", "axis")
+              cekproduk(6, `6${spasi(7)}%3d%20`, priceAxis.v6, e.value, e.previousElementSibling.textContent, "voucher", "axis")
+              cekproduk(4, `4${spasi(7)}%3d%20`, priceAxis.v4, e.value, e.previousElementSibling.textContent, "voucher", "axis")
+              cekproduk(2, `2${spasi(7)}%3d%20`, priceAxis.v2, e.value, e.previousElementSibling.textContent, "voucher", "axis")
+            }
+          })
+
+
+          const totalharga = totalxl + totalaxis;
+
+
+
+          arr.push(`Rp.%20${totalaxis.toFixed(3)}%0a%0a`)
+          if (xlada == true) {
+            arr.push(`Rp.%20${totalxl.toFixed(3)}%20%2B%20Rp.%20${totalaxis.toFixed(3)}%20%0a=%20Rp.%20${totalharga.toFixed(3)}`)
+          }
+
+
+
+
+
+          const tableaxis = document.querySelector('.tbody-axis')
+          const totalprodukaxis = document.querySelector('.total-axis')
+
+
+
+          tableaxis.innerHTML = hargaaxis
+          totalprodukaxis.innerHTML = `Rp. ${totalaxis.toFixed(3)}`
+          const tampilan = document.querySelectorAll('.tampilan')
+
+
+          tampilan[0].innerHTML = `Rp. ${totalxl.toFixed(3)}`
+          tampilan[1].innerHTML = `Rp. ${totalaxis.toFixed(3)}`
+          tampilan[2].innerHTML = `Rp. ${totalharga.toFixed(3)}`
+
+        }
+
+
+
+      }, 1000);
+
+
+      const arrHari = ["Ahad", "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu"]
+      const arrBulan = ["Jan", "Feb", "Mar", "Apr", "Mei", "Jun", "Jul", "Agust", "Sep", "Okt", "Nov", "Des"]
+
+      const voucherxl = document.querySelectorAll('.voucher.v-xl')
+      const kartuxl = document.querySelectorAll('.kartu.k-xl')
+
+
+
+      const voucheraxis = document.querySelectorAll('.voucher.v-axis')
+      const kartuaxis = document.querySelectorAll('.kartu.k-axis')
+
+
+
+
+      function copy(isiTeks) {
+        navigator.clipboard.writeText(isiTeks);
+
+
+      }
+
+      function kirim() {
+
+        let link = "https://api.whatsapp.com/send?phone=6285298408041&text="
+        window.location.href = link + arr.join("")
+        copy(decodeURIComponent(arr.join("")))
+      }
+
+
+      function hapus(produk) {
+        const voucher = document.querySelectorAll(`.voucher.v-${produk}`)
+        const kartu = document.querySelectorAll(`.kartu.k-${produk}`)
+        console.log(kartu)
+
+        kartu.forEach(e => {
+          e.value = ''
+        });
+        voucher.forEach(e => {
+          e.value = ''
+        });
+
+      }
+
+      function cektampil() {
+        if (document.querySelector('input#axis').checked) {
+          document.querySelectorAll('.sembunyikan-axis').forEach(e => {
+            e.classList.remove('hide')
+          })
+          document.querySelectorAll('.tampilkan-axis').forEach(e => {
+            e.classList.add('hide')
+          })
+        } else {
+          document.querySelectorAll('.tampilkan-axis').forEach(e => {
+            e.classList.remove('hide')
+          })
+          document.querySelectorAll('.sembunyikan-axis').forEach(e => {
+            e.classList.add('hide')
+          })
+          hapus('axis')
+        }
+      }
+
+
+
+
+
+
+
+    </script>
+ </body>
+
+</html>
